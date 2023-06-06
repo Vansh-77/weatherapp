@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          "14'C",
+                          "24'C",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
