@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double maxwidth = MediaQuery.of(context).size.width;
@@ -73,47 +78,67 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            for (int i = 0; i < 10; i++)
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  width: maxwidth,
-                  height: maxheight * 0.2,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromRGBO(0, 10, 40, 1),
-                  ),
-                  child: ListView.separated(
-                    padding: const EdgeInsets.all(0),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(
-                        width: 10,
-                      );
-                    },
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: maxwidth * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 28, 93, 125),
-                        ),
-                        child: Center(
-                          child: Text(
-                            (index + 1).toString(),
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                width: maxwidth,
+                height: maxheight * 0.2,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromRGBO(0, 10, 40, 1),
+                ),
+                child: ListView.separated(
+                  padding: const EdgeInsets.all(0),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 8,
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      width: 10,
+                    );
+                  },
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: maxwidth * 0.25,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromRGBO(255, 255, 255, 0.12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          (index + 1).toString(),
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
+            ),
+            SizedBox(
+              height: maxheight,
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18.0, vertical: 18),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(0, 10, 40, 0.7),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
